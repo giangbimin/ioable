@@ -4,7 +4,13 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all.order('created_at DESC').page(params[:page]).per(5)
+    if !params[:term].blank?
+      @articles = Article.search_for(params[:term])
+                         .order('created_at DESC').page(params[:page]).per(5)
+    else
+      @articles = Article.all.order('created_at DESC')
+                         .page(params[:page]).per(5)
+    end
   end
 
   # GET /articles/1
