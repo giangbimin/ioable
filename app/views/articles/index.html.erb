@@ -1,29 +1,48 @@
-<p id="notice"><%= notice %></p>
+    <div class="container">
+     <div class="row">
+      <p id="notice"><%= notice %></p>
 
-<h1>Articles</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.body %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Article', new_article_path %>
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+        <h1 class="page-header">
+          Page Heading
+          <small>Secondary Text</small>
+        </h1>
+        <% @articles.each do |article| %>
+        <h2>
+          <%= link_to article.title, article %>
+        </h2>
+        <p class="lead">
+          by <a href="index.php">Start Bootstrap</a>
+        </p>
+        <p><span class="glyphicon glyphicon-time"></span> Created in <%= time_ago_in_words(article.created_at)%> ago </p>
+        <hr>
+        <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+        <hr>
+        <p><%= raw(article.body).truncate(358) %></p>
+        <%= link_to article , class: "btn btn-primary" do %>
+          Read More <span class="glyphicon glyphicon-chevron-right"></span>
+        <%end%>
+        <%= link_to edit_article_path(article), class: "btn btn-primary" do %>
+        Edit <span class="glyphicon glyphicon-chevron-right"></span>
+        <%end%> 
+        <%= link_to article, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" do %>
+        Destroy <span class="glyphicon glyphicon-chevron-right"></span>
+        <%end%> 
+        <hr>
+        <% end %>
+        <!-- Pager -->
+        <ul class="pager">
+          <li class="previous">
+            <a href="#">&larr; Older</a>
+          </li>
+          <li class="next">
+            <a href="#">Newer &rarr;</a>
+          </li>
+        </ul>
+      </div>
+      <%= render "layouts/sitebar" %>
+    </div>
+    <!-- /.row -->
+    <hr>
+  </div>
