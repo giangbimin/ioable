@@ -20,6 +20,11 @@
 		<!-- Date/Time -->
 		<p><span class="glyphicon glyphicon-time"></span> Posted on <%= @article.created_at.strftime('%b, %d, %Y')%></p>
 		<hr>
+		<p>
+      <% @article.tag_list.each do |tag| %>
+        <%= link_to tag, controller: "tags", action: "show", class: "tag"%>
+     	<% end %>
+    </p>
 		<!-- Preview Image -->
 		<img class="img-responsive" src="http://placehold.it/900x300" alt="">
 		<hr>

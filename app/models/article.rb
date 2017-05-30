@@ -1,7 +1,7 @@
 class Article < ApplicationRecord
   extend FriendlyId
   include PgSearch
-
+  acts_as_taggable
   friendly_id :title, use: :slugged
 
   pg_search_scope :search_for, against: { title: 'A', body: 'B' },

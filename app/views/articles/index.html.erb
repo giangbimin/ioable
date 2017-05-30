@@ -9,27 +9,7 @@
           <small>Secondary Text</small>
         </h1>
         <% @articles.each do |article| %>
-        <h2>
-          <%= link_to article.title, article %>
-        </h2>
-        <p class="lead">
-          by <a href="index.php">Start Bootstrap</a>
-        </p>
-        <p><span class="glyphicon glyphicon-time"></span> Created in <%= time_ago_in_words(article.created_at)%> ago </p>
-        <hr>
-        <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-        <hr>
-        <p><%= raw(article.body).truncate(358) %></p>
-        <%= link_to article , class: "btn btn-primary" do %>
-          Read More <span class="glyphicon glyphicon-chevron-right"></span>
-        <%end%>
-        <%= link_to edit_article_path(article), class: "btn btn-primary" do %>
-        Edit <span class="glyphicon glyphicon-chevron-right"></span>
-        <%end%> 
-        <%= link_to article, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" do %>
-        Destroy <span class="glyphicon glyphicon-chevron-right"></span>
-        <%end%> 
-        <hr>
+          <%= render partial: "article", locals: {article: article} %>
         <% end %>
           <div class="pager">
             <!-- Pager -->

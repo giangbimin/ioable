@@ -1,0 +1,13 @@
+<!-- Blog Search Well -->
+<div class="well">
+    <h4>Blog Search</h4>
+      <%= form_tag articles_path, method: :get, class: "form-inline" do %>
+        <div class="form-group">
+          <%= text_field_tag 'term', params[:term], placeholder: "Enter text you want to find", class: "form-control"%>
+          <%= button_tag(type: 'submit', class: "btn btn-default") do %>
+            <span class="glyphicon glyphicon-search"></span>
+          <% end %>
+        </div>
+      <% end %>
+    <!-- /.input-group -->
+</div>
