@@ -1,14 +1,7 @@
-<%= link_to 'Back', articles_path %>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-
-
 
 <div class="row">
-
 	<!-- Blog Post Content Column -->
 	<div class="col-lg-8">
-		<p id="notice"><%= notice %></p>
 		<!-- Blog Post -->
 		<!-- Title -->
 		<h1><%= @article.title %></h1>
@@ -18,11 +11,26 @@
 		</p>
 		<hr>
 		<!-- Date/Time -->
-		<p><span class="glyphicon glyphicon-time"></span> Posted on <%= @article.created_at.strftime('%b, %d, %Y')%></p>
+		<div class="row">
+			<div class="col-lg-6">
+				<p><span class="glyphicon glyphicon-time"></span> Posted on <%= @article.created_at.strftime('%b, %d, %Y')%></p>
+			</div>
+			<div class="col-lg-6 text-right">
+				<%= link_to 'Back', articles_path, class: "btn btn-primary"  %>
+				<% if user_signed_in? && current_user.id ==  @article.user_id %>
+					<%= link_to edit_article_path(@article), class: "btn btn-primary" do %>
+					  Edit <span class="glyphicon glyphicon-chevron-right"></span>
+					<%end%>
+					<%= link_to @article, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" do %>
+					  Destroy <span class="glyphicon glyphicon-chevron-right"></span>
+					<%end%>
+				<% end %>
+			</div>
+		</div>
 		<hr>
-		<p>
+		<p>Tags: 
       <% @article.tag_list.each do |tag| %>
-        <%= link_to tag, controller: "tags", action: "show", class: "tag"%>
+        <%= link_to tag, controller: "tags", action: "show", id: tag%>
      	<% end %>
     </p>
 		<!-- Preview Image -->

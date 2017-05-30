@@ -11,6 +11,9 @@ class Article < ApplicationRecord
           any_word: true
         }
     }
+  validates :title, presence: true, length: { maximum: 140 }
+  validates :body, presence: true
+  belongs_to :user
 
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
