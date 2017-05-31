@@ -12,21 +12,27 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li ><%= link_to "about", "/about" %></li>
-              <li ><%= link_to "contact", "/contact" %></li>
+              <li ><%= link_to "About", "/about" %></li>
+              <li ><%= link_to "Contact", "/contact" %></li>
               <li ><%= link_to "CS prework", "articles/check-list" %></li>
               <% if user_signed_in? %>
               <!--This block is only visible to signed in users -->
               <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+              <li>
+                <%= form_tag articles_path, method: :get, class: "form-inline", style: "padding: 10px;" do %>
+                  <%= text_field_tag 'term', params[:term], placeholder: "Enter text you want to find", class: "form-control"%>
+                  <%= button_tag(type: 'submit', class: "btn btn-default") do %>
+                    <span class="glyphicon glyphicon-search"></span>
+                  <% end %>
+              <% end %>
+              </li>
               <% if user_signed_in? %>
                 <li><%= link_to 'New Article', new_article_path  %></li>
-                <li><%= link_to 'My Account', edit_user_registration_path  %></li>
-                <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
-              <!-- The block ends here -->
               <% else %>
                 <li><%= link_to 'Login', new_user_session_path  %></li>
+                <li><%= link_to 'Sign Up', new_user_registration_path  %></li>
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->

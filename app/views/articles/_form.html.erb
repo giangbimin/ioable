@@ -27,6 +27,19 @@
       <%= f.label :body %>
       <%= f.text_area :body, class: "form-control", rows: "20"%>
     </div>
+    <% if @article.picture.present? %>
+        <%= image_tag @article.picture.small.url, class: "img-rounded"%>
+      <div class="form-group">
+        <%= f.label :remove_picture%> <i>(leave blank if you dont want to remove avatar )</i><br />
+        <%= f.check_box :remove_picture %>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= f.label :picture do %><br />
+        <%= f.file_field :picture, class: "form-control" %>
+        <%= f.hidden_field :picture_cache %>
+      <% end %>
+    </div>
     <div class="form-group">
       <%= f.button :submit %>
     </div> 

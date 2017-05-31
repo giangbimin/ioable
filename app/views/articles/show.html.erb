@@ -1,3 +1,4 @@
+<% provide(:page_title, @article.title) %>
 
 <div class="row">
 	<!-- Blog Post Content Column -->
@@ -33,8 +34,10 @@
         <%= link_to tag, controller: "tags", action: "show", id: tag%>
      	<% end %>
     </p>
+    <% if @article.picture.present? %>
 		<!-- Preview Image -->
-		<img class="img-responsive" src="http://placehold.it/900x300" alt="">
+			<%= image_tag @article.picture.lange.url, class: "img-responsive", alt: @article.title %>
+		<% end %>
 		<hr>
 		<!-- Post Content -->
 		<p class="lead"></p>

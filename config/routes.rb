@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   root to: 'articles#index'
   resources :articles, concerns: :paginatable
   resources :tags, only: :show
-  get '*path' => redirect('/')
+  # get '*path' => redirect('/')
 end
