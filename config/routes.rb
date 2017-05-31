@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     get '(page/:page)', action: :index, on: :collection, as: ''
   end
   root to: 'articles#index'
-  resources :articles, concerns: :paginatable
+  resources :articles, concerns: :paginatable do
+    resources :comments
+  end
   resources :tags, only: :show
   # get '*path' => redirect('/')
 end

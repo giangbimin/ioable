@@ -3,6 +3,9 @@ class Article < ApplicationRecord
   include PgSearch
   acts_as_taggable
   friendly_id :title, use: :slugged
+  belongs_to :user
+  has_many :comments, dependent: :destroy
+  mount_uploader :picture, PictureUploader
 
   pg_search_scope :search_for, against: { title: 'A', body: 'B' },
     using: {
@@ -13,8 +16,6 @@ class Article < ApplicationRecord
     }
   validates :title, presence: true, length: { maximum: 140 }
   validates :body, presence: true
-  belongs_to :user
-  mount_uploader :picture, PictureUploader
   validates_processing_of :picture
   validate :image_size_validation
 

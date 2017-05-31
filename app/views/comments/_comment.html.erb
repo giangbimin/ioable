@@ -1,0 +1,28 @@
+	<!-- Comment -->
+		<div class="media">
+			<a class="pull-left" href="#">
+			 <% if comment.user.avatar.present? %>
+				<%= image_tag comment.user.avatar.thumb.url, class: "media-object" %>
+			<% else %>
+				<img class= src="http://placehold.it/64x64" alt="">
+			<% end %>
+			</a>
+
+			<div class="media-body">
+				<h4 class="media-heading">
+				<% if comment.user.name.present? %>
+					<%= comment.user.name %>
+				<% else %>
+					<%= comment.user.email %>
+				<% end %>
+					<small><%= time_ago_in_words(comment.created_at) %> ago</small> <br>
+					<% if user_signed_in? && current_user.id ==  comment.user_id %>
+						<small>
+        		 <%= link_to 'Destroy', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' } %> 
+        		 </small>
+					<% end %>
+				</h4>
+				<%= comment.body %>
+			</div>
+		</div>
+	<!-- Comment -->
