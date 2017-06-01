@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :find_article
-  before_action :find_comment, only: :destroy
-  before_action :author?, only: :destroy
+  before_action :find_comment, only: [:destroy, :update, :edit]
+  before_action :author?, only: [:destroy, :edit, :update]
 
   def create
     @comment = @article.comments.create(comment_params)
@@ -21,7 +21,20 @@ class CommentsController < ApplicationController
     end
   end
 
+  def update
+    if @comment.update(comment_params)
+      respond_to do |format|
+        format.html { redirect_to article_path(@article), notice: 'comments was successfully destroyed.' }
+      end
+    else
+      render 'edit'
+      flash.now[:danger] = 'error'
+    end
+  end
+
   def new; end
+
+  def edit; end
 
   private
 

@@ -5,6 +5,7 @@ class Article < ApplicationRecord
   friendly_id :title, use: :slugged
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :trackers
   mount_uploader :picture, PictureUploader
 
   pg_search_scope :search_for, against: { title: 'A', body: 'B' },

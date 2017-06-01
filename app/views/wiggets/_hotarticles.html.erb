@@ -1,0 +1,28 @@
+<!-- Popular tags -->
+<div class="well">
+  <h4>Popular posts</h4>
+    <div id="popular_articles">
+		  <%@popular_articles.each do |article|%>
+				<div class="media well">
+					<%= link_to  article, class: "pull-left" do %>
+				  		<% if article.picture.present? %>
+				  			<%= image_tag article.picture.thumb.url, alt: article.title %>
+				  		<% else %>
+              	<img class="media-object" src="http://placehold.it/64x64" alt="">
+              <% end %>
+              <br>
+              <small><span class="glyphicon glyphicon-eye-open"> </span><%= article.view %>  |  <span class="glyphicon glyphicon-comment"> </span> <%= article.comments.count %>  </small>
+          <% end %>
+
+					<div class="media-body">
+						<h4 class="media-heading">
+		   			<small><%= link_to article.title.truncate(60), article %>...</small><br>
+							<small><span class="glyphicon glyphicon-time"></span><%= time_ago_in_words(article.created_at) %> ago</small> <br>
+						</h4>
+						<%= raw(article.body).truncate(40) %>....
+					</div>
+				</div>
+			<!-- Comment -->
+		  <% end %>
+	  </div>
+</div>

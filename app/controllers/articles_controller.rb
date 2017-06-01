@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token
   before_action :authenticate_user!, except: [:index, :show]
-
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :popular_articles, only: [:index, :show]
   # GET /articles
   # GET /articles.json
   def index
@@ -18,6 +19,9 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @comments = @article.comments.order('created_at DESC')
+    @article.trackers.create({ guess_ip: request.remote_ip.to_s })
+    @article.update(view: @article.trackers.pluck(:guess_ip).length)
+    # @article.update(view: @article.trackers.pluck(:guess_ip).uniq.length)
   end
 
   # GET /articles/new
@@ -88,6 +92,10 @@ class ArticlesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_article
     @article = Article.friendly.find(params[:id])
+  end
+
+  def popular_articles
+    @popular_articles = Article.all.order(view: :desc).limit(5)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

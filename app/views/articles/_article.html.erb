@@ -1,6 +1,6 @@
 <div class="well">
     <h2>
-      <%= link_to article.title, article %>
+    <%= link_to article.title, article %>
     </h2>
     <% if article.user.present? %>
       <p class="lead">
@@ -25,6 +25,8 @@
     <% end %>
     <p><%= raw(article.body).truncate(358) %>....</p>
     <hr>
+            <%= article.view %> <span class="glyphicon glyphicon-comment"></span>
+            <%= article.comments.count %> <span class="glyphicon glyphicon-eye-open"></span>
       <%= link_to article , class: "btn btn-primary" do %>
         Read More <span class="glyphicon glyphicon-chevron-right"></span>
       <%end%>

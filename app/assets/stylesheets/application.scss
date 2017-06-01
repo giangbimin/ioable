@@ -15,20 +15,90 @@
 @-o-viewport      { width: device-width; }
 @viewport         { width: device-width; }
 body {
-  padding-top: 20px;
+  padding-top: 0px;
   padding-bottom: 20px;
 }
 
 .navbar {
   margin-bottom: 20px;
+  margin-top: -60px;
 }
 .tag {
   background-color: #E1ECF4
 }
 #tag_cloud {
-  width: 400px;
   line-height: 1.6em;
   .s { font-size: 0.8em; }
   .m { font-size: 1.2em; }
   .l { font-size: 1.8em; }
+}
+
+.hearder-home {
+    background-image: image-url("header-bg3.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    text-align: center;
+    color: #fff;
+}
+.hearder-order {
+    background-image: image-url("header-bg2.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    text-align: center;
+    color: #fff;
+}
+.hearder-order .intro-text {
+    padding-top: 30px;
+    padding-bottom: 40px;
+}
+.hearder-home .intro-text {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+header .intro-text .intro-lead-in {
+    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 22px;
+    margin-bottom: 25px;
+}
+header .intro-text .intro-heading {
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 50px;
+    margin-bottom: 25px;
+}
+.btn-primary, .btn-xl, h1, h2, h3, h4, h5, h6 {
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.btn-xl {
+    color: #fff;
+    background-color: #fed136;
+    border-color: #fed136;
+    border-radius: 3px;
+    font-size: 18px;
+    padding: 20px 40px;
+}
+@media (min-width: 768px){
+header .intro-text {
+    padding-top: 250px;
+    padding-bottom: 200px;
+}
+}
+.LI-badge-container.vertical.dark {
+    width: 100% !important;
 }

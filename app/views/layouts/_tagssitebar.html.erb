@@ -1,7 +1,11 @@
             <!-- Blog Sidebar Widgets Column -->
-            <div class="col-md-4">
+            <div class="col-md-4 ">
                 <%= render "wiggets/notice" %>
-                <%= render "wiggets/seachbox" %>
+                <% if user_signed_in? %>
+                	<%= render "wiggets/usersetting" %>
+                <% end %>
                 <%= render "wiggets/tagscloud" %>
+                <%= render "wiggets/hotarticles" %>
                 <%= render "wiggets/profile" %>
+                <%= render "wiggets/seachbox" %>
             </div>

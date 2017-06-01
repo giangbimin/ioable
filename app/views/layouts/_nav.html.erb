@@ -1,5 +1,5 @@
       <!-- Static navbar -->
-      <nav class="navbar navbar-default">
+      <nav class="navbar navbar-default"  id="wellcome">
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -20,6 +20,9 @@
               <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+             <% if user_signed_in? %>
+                <li class="active"><%= link_to 'New Article', new_article_path %></li>
+              <% end %>
               <li>
                 <%= form_tag articles_path, method: :get, class: "form-inline", style: "padding: 10px;" do %>
                   <%= text_field_tag 'term', params[:term], placeholder: "Enter text you want to find", class: "form-control"%>
@@ -28,9 +31,7 @@
                   <% end %>
               <% end %>
               </li>
-              <% if user_signed_in? %>
-                <li><%= link_to 'New Article', new_article_path  %></li>
-              <% else %>
+              <% unless user_signed_in? %>
                 <li><%= link_to 'Login', new_user_session_path  %></li>
                 <li><%= link_to 'Sign Up', new_user_registration_path  %></li>
               <% end %>
