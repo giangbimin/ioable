@@ -30,7 +30,10 @@ gem 'devise'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'acts-as-taggable-on', '~> 5.0'
-gem 'rails_12factor'
+
+group :production do
+  gem 'rails_12factor'
+end
 
 group :development, :test do
   gem 'byebug', platform: :mri
