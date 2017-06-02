@@ -30,13 +30,5 @@
       <%= link_to article , class: "btn btn-primary" do %>
         Read More <span class="glyphicon glyphicon-chevron-right"></span>
       <%end%>
-      <% if user_signed_in? && current_user.id ==  article.user_id %>
-        <%= link_to edit_article_path(article), class: "btn btn-primary" do %>
-        Edit <span class="glyphicon glyphicon-chevron-right"></span>
-        <%end%>
-        <%= link_to article, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" do %>
-          Destroy <span class="glyphicon glyphicon-chevron-right"></span>
-        <%end%>
-      <% end %>
     <hr>
 </div>

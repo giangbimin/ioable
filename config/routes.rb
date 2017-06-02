@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   end
   resources :tags, only: :show
   # get '*path' => redirect('/')
+  get '/*page' => 'pages#show'
 end

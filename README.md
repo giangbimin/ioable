@@ -1,18 +1,16 @@
-# Pre-work - *BlogCS*
+# Pre-work - *IOable*
 
-**BlogCS** is a Ruby on Rails blog application.
+**IOable** is a Ruby on Rails blog application.
 
-Submitted by: **BlogCS**
+Submitted by: **IOable**
 
-Time spent: 6 hours spent in total
+Time spent: 15 hours spent in total
 
-URL: **Insert your Heroku URL here**
+URL: **https://ioable.herokuapp.com/**
 
 ## User Stories
 
 The following is a list of **required** features of the application you'll build for our Pre-work.
-
-> HINT: Mark the items you completed with [x] as you go
 
 * [x] Users can create, edit, and delete Articles from the database using their Rails application.
 * [x] User can create a new Article, formatted using the Markdown language.
