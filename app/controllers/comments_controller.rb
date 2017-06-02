@@ -7,10 +7,12 @@ class CommentsController < ApplicationController
     @comment = @article.comments.create(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to @article
+      respond_to do |format|
+        format.html { redirect_to @article }
+        format.js
+      end
     else
       render 'new'
-      flash.now[:danger] = 'error'
     end
   end
 
@@ -18,6 +20,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to article_path(@article), notice: 'comments was successfully destroyed.' }
+      format.js
     end
   end
 

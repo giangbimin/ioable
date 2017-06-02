@@ -52,14 +52,16 @@
 		<hr>
 		<!-- Blog Comments -->
     <% if user_signed_in? %>
-       <%= render "comments/form" %>
+    	<div class="ajax-form-create">
+    		<%= render "comments/form", article: @article %>
+      </div>
     <% else %>
       <%= link_to 'Login to create Comment', new_user_session_path  %>
     <% end %>  
 		<!-- Posted Comments -->
-			<% @comments.each do |comment| %>
-        <%= render partial: "comments/comment", locals: {comment: comment} %>
-     	<% end %>
+		<div class="div-create">
+      <%= render "comments/comments", comments: @comments %>
+    </div>
 	</div>
 	<%= render "layouts/sitebar" %>
 </div>

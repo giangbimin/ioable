@@ -1,0 +1,14 @@
+$('.destroy_comment').click(function(){
+   $(this).closest('.media').html('<%= j render "comments/edit", article: @article, comment :@comment %>');
+});
+
+
+function showEditBox(editobj,id) {
+	$('.comment_'+ id).hide();
+	$('.comment_'+ id).html('<%= j render "comments/edit", article: @article, comment: @comment %>');
+}
+
+function cancelEdit(message,id) {
+	$("#message_" + id + " .message-content").html(message);
+	$('#frmAdd').show();
+}

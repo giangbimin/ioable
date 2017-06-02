@@ -1,3 +1,4 @@
+<% comments.each do |comment| %>
 	<!-- Comment -->
 		<div class="media">
 			<a class="pull-left" href="#">
@@ -18,7 +19,8 @@
 					<small><%= time_ago_in_words(comment.created_at) %> ago</small> <br>
 					<% if user_signed_in? && current_user.id ==  comment.user_id %>
 						<small>
-        		 <%= link_to 'Destroy', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' } %> 
+        		 <%= link_to 'Edit', edit_article_comment_path(comment.article, comment), class: 'edit_comment'%> 
+        		 <%= link_to 'Destroy', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?'}, remote: true, class: 'delete_comment' %> 
         		 </small>
 					<% end %>
 				</h4>
@@ -26,3 +28,4 @@
 			</div>
 		</div>
 	<!-- Comment -->
+<% end %>

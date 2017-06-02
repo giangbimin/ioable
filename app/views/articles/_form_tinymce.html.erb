@@ -1,0 +1,61 @@
+<div class="container">
+ <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+ <script>
+  tinymce.init({
+      selector: "textarea",
+      menu: {
+        table: {title: 'Table', items: 'inserttable tableprops deletetable | cell row column'}
+      },
+      plugins: [ 
+          "advlist autolink lists link image charmap preview anchor",
+          "searchreplace visualblocks code fullscreen",
+          "insertdatetime media table contextmenu paste"
+      ],
+      toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+  });
+</script>
+  <%= simple_form_for @article, remote: true do |f| %>
+    <% if @article.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= "#{pluralize(@article.errors.count, "error")} prohibited this article from being saved:" %>
+        </h2>
+        <ul>
+          <% @article.errors.full_messages.each do |msg| %>
+            <li>
+              <%= msg %>
+            </li>
+            <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.input :title, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%=  f.label :tag_list, "Tags: (Separate the tag by comma) " %>
+      <%= f.text_field :tag_list, id: "myTags", class: "form-control"%>
+    </div>
+    <div class="form-group">
+      <%= f.label :body %>
+      <%= f.text_area :body, class: "form-control", rows: "20"%>
+    </div>
+    <% if @article.picture.present? %>
+        <%= image_tag @article.picture.small.url, class: "img-rounded"%>
+      <div class="form-group">
+        <%= f.label :remove_picture%> <i>(leave blank if you dont want to remove avatar )</i><br />
+        <%= f.check_box :remove_picture %>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= f.label :picture do %><br />
+        <%= f.file_field :picture, class: "form-control" %>
+        <%= f.hidden_field :picture_cache %>
+      <% end %>
+    </div>
+    <div class="form-group">
+      <%= f.button :submit %>
+    </div> 
+  <% end %>
+</div>

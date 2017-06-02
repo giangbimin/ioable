@@ -1,0 +1,4 @@
+$('.edit_comment').bind('ajax:success', function() {
+   $(this).closest('.media').fadeOut();
+});
+$('.div-create').html('<%= j render "comments/comments", comments: @article.comments.order(created_at: :DESC) %>').appendTo('.div-create');

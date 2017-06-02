@@ -1,0 +1,2 @@
+  $('.ajax-form-create').html('<%= j render "comments/form", article: @article %>');
+  $('.div-create').html('<%= j render "comments/comments", comments: @article.comments.order(created_at: :DESC) %>').appendTo('.div-create');
