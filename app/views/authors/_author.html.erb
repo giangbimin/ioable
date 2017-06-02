@@ -1,0 +1,21 @@
+		<div class="media">
+			<a class="pull-left" href="#">
+			 <% if author.avatar.present? %>
+				<%= image_tag author.avatar.thumb.url, class: "media-object" %>
+			<% else %>
+				<img class= src="//placehold.it/64x64" alt="">
+			<% end %>
+			</a>
+
+			<div class="media-body">
+				<h4 class="media-heading">
+				<% if author.name.present? %>
+					<%= author.name %>
+				<% else %>
+					<%= author.email %>
+				<% end %>
+					<small>Signed up<%= time_ago_in_words(author.created_at) %> ago</small> <br>
+				</h4>
+			</div>
+		</div>
+	<!-- Comment -->

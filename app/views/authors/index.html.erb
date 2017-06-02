@@ -1,0 +1,17 @@
+<div class="container">
+ <div class="row">
+  <p id="notice"><%= notice %></p>
+  <!-- Blog Entries Column -->
+  <div class="col-md-8">
+    <h1 class="page-header">
+      <small>List author</small>
+    </h1>
+    <% @authors.each do |author| %>
+      <%= render partial: "authors/author", locals: {author: author} %>
+    <% end %>
+  </div>
+  <%= render "layouts/tagssitebar" %>
+</div>
+<!-- /.row -->
+<hr>
+</div>
