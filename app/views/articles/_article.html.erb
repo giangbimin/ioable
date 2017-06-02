@@ -23,7 +23,7 @@
      <%= image_tag article.picture.medium.url, class: "img-responsive", alt: article.title %>
     <hr>
     <% end %>
-    <p><%= raw(article.body).truncate(358) %>....</p>
+    <p><%= raw(article.description).truncate(358) %>....</p>
     <hr>
             <%= article.view %> <span class="glyphicon glyphicon-comment"></span>
             <%= article.comments.count %> <span class="glyphicon glyphicon-eye-open"></span>
