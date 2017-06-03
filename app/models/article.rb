@@ -6,7 +6,7 @@ class Article < ApplicationRecord
 
   belongs_to :user
   has_many :comments, dependent: :destroy
-  has_many :trackers
+  has_many :trackers, dependent: :destroy
 
   mount_uploader :picture, PictureUploader
 

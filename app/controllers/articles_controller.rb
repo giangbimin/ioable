@@ -3,6 +3,8 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :popular_articles, only: [:index, :show]
+  before_action :author?, only: [:destroy, :edit, :update]
+
   # GET /articles
   # GET /articles.json
   def index
@@ -55,16 +57,12 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1.json
   def update
     respond_to do |format|
-      if author?
-        if @article.update(article_params)
-          format.html { redirect_to @article, notice: 'Article was successfully updated.' }
-          format.json { render :show, status: :ok, location: @article }
-        else
-          format.html { render :edit }
-          format.json { render json: @article.errors, status: :unprocessable_entity }
-        end
+      if @article.update(article_params)
+        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.json { render :show, status: :ok, location: @article }
       else
-        format.html { redirect_to articles_url, notice: 'You are not author' }
+        format.html { render :edit }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -72,23 +70,21 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
-    if author?
-      @article.destroy
-      respond_to do |format|
-        format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
-        format.json { head :no_content }
-      end
-    else
-      respond_to do |format|
-        format.html { redirect_to articles_url, notice: 'You are not author' }
-      end
+    @article.destroy
+    respond_to do |format|
+      format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
+      format.json { head :no_content }
     end
   end
 
   private
 
   def author?
-    @article.user == current_user
+    unless @article.user == current_user
+      respond_to do |format|
+        format.html { redirect_to @article, notice: 'You are not author' }
+      end
+    end
   end
 
   # Use callbacks to share common setup or constraints between actions.
