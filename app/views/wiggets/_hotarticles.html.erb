@@ -8,7 +8,7 @@
 				  		<% if article.picture.present? %>
 				  			<%= image_tag article.picture.thumb.url, alt: article.title %>
 				  		<% else %>
-              	<img class="media-object" src="http://placehold.it/64x64" alt="">
+              	<%= image_tag(image_url("avatar.png"), class: "media-object") %>
               <% end %>
               <br>
               <small><span class="glyphicon glyphicon-eye-open"> </span><%= article.view %>  |  <span class="glyphicon glyphicon-comment"> </span> <%= article.comments.count %>  </small>

@@ -9,9 +9,11 @@ class ArticlesController < ApplicationController
     if !params[:term].blank?
       @articles = Article.search_for(params[:term])
                          .order('created_at DESC').page(params[:page]).per(5)
+      @count = Article.search_for(params[:term]).count
     else
       @articles = Article.all.order('created_at DESC')
                          .page(params[:page]).per(5)
+      @count = Article.count
     end
   end
 

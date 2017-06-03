@@ -3,7 +3,7 @@
       <!-- Blog Entries Column -->
       <div class="col-md-8">
         <h1 class="page-header">
-          All Articles ( <%= Article.count %> )
+          Articles ( <%= @count %> )
         </h1>
           <% @articles.each do |article| %>
             <%= render partial: "article", locals: {article: article} %>
