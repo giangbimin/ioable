@@ -9,10 +9,10 @@
 		<!-- Author -->
 		<p class="lead">
 			by 
-		<% if @article.user.name.present? %>
-        <strong><%= @article.user.name.to_s %></strong>
+    <% if @article.user.name.present? %>
+        <strong><%= link_to @article.user.name.to_s, author_path(@article.user) %></strong>
     <%else%>
-        <strong><%= @article.user.email.to_s %></strong>
+        <strong><%= link_to @article.user.email.to_s, author_path(@article.user) %></strong>
     <% end %> 
     </p>
 		<hr>
