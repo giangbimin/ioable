@@ -2,7 +2,7 @@
     <% if current_user.avatar.present? %>
      <%= image_tag current_user.avatar.thumb.url, class: "img-thumbnail img-circle"%>
     <% else %>
-      <%= image_tag(image_url("avatar.png"), class: "media-object") %>
+      <%= image_tag(image_url("avatar.png"), class: "img-thumbnail img-circle") %>
     <% end %>
   <h3><%= current_user.name %></h3>
   <h5>(<%= current_user.email %>)</h5>
