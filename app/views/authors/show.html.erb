@@ -1,0 +1,21 @@
+<div class="container">
+ <div class="row">
+  <p id="notice"><%= notice %></p>
+  <!-- Blog Entries Column -->
+  <div class="col-md-8">
+    <h1 class="page-header">
+      <small>Author name</small>  <%= @author.name %>( <%= @articles.count %> )
+    </h1>
+    <% @articles.each do |article| %>
+      <%= render partial: "articles/article", locals: {article: article} %>
+    <% end %>
+      <div class="pager">
+        <!-- Pager -->
+        <%= paginate @articles, theme: 'twitter-bootstrap-3' %>
+      </div>
+  </div>
+  <%= render "layouts/tagssitebar" %>
+</div>
+<!-- /.row -->
+<hr>
+</div>

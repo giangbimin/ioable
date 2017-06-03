@@ -5,7 +5,7 @@
 			 <% if comment.user.avatar.present? %>
 				<%= image_tag comment.user.avatar.thumb.url, class: "media-object" %>
 			<% else %>
-				<img class= src="http://placehold.it/64x64" alt="">
+				<%= image_tag(image_url("avatar.png"), class: "media-object") %>
 			<% end %>
 			</a>
 

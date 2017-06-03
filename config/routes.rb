@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :articles, concerns: :paginatable do
     resources :comments
   end
+  resources :authors
   resources :tags, only: :show
   # get '*path' => redirect('/')
   get '/*page' => 'pages#show'

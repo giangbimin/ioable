@@ -6,9 +6,9 @@
       <p class="lead">
       Created by 
     <% if article.user.name.present? %>
-        <strong><%= article.user.name.to_s %></strong>
+        <strong><%= link_to article.user.name.to_s, author_path(article.user) %></strong>
     <%else%>
-        <strong><%= article.user.email.to_s %></strong>
+        <strong><%= link_to article.user.email.to_s, author_path(article.user) %></strong>
     <% end %> 
         <small><%= time_ago_in_words(article.created_at)%> ago </small>
       </p>
@@ -25,8 +25,8 @@
     <% end %>
     <p><%= raw(article.description).truncate(358) %>....</p>
     <hr>
-            <%= article.view %> <span class="glyphicon glyphicon-comment"></span>
-            <%= article.comments.count %> <span class="glyphicon glyphicon-eye-open"></span>
+            <%= article.view %> <span class="glyphicon glyphicon-eye-open"></span>
+            <%= article.comments.count %> <span class="glyphicon glyphicon-comment"></span>
       <%= link_to article , class: "btn btn-primary" do %>
         Read More <span class="glyphicon glyphicon-chevron-right"></span>
       <%end%>
