@@ -2,7 +2,7 @@
     <% if current_user.avatar.present? %>
      <%= image_tag current_user.avatar.thumb.url, class: "img-thumbnail img-circle"%>
     <% else %>
-      <img class="img-thumbnail img-circle" src="http://placehold.it/64x64" alt="">
+      <%= image_tag(image_url("avatar.png"), class: "media-object") %>
     <% end %>
   <h3><%= current_user.name %></h3>
   <h5>(<%= current_user.email %>)</h5>
