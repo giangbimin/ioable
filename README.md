@@ -41,8 +41,7 @@ The following **optional** features are implemented:
 * [x] Tracking trafic of artices by client ip.
 
 ## Video Walkthrough 
-
-![Video Walkthrough](/path/to/your/gif/file)
+![Video Walkthrough](http://i.imgur.com/u8XvuWj.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
